@@ -1,10 +1,12 @@
-import { RouterModule, Routes } from '@angular/router';
+import { provideRouter, RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './public/home/home.component';
 import { LoginComponent } from './public/login/login.component';
-import { NgModule } from '@angular/core';
+import { NgModule, provideZoneChangeDetection } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, provideHttpClient } from '@angular/common/http';
 import { SharedModule } from './shared/shared.module';
+import { provideClientHydration } from '@angular/platform-browser';
+import { graphqlProvider } from './graphql.provider';
 
 export const routes: Routes = [
     { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -15,6 +17,13 @@ export const routes: Routes = [
 
 @NgModule({
     imports: [RouterModule.forRoot(routes), MatButtonModule, SharedModule],
+    providers: [
+        provideZoneChangeDetection({ eventCoalescing: true }),
+        provideRouter(routes),
+        provideClientHydration(),
+        provideHttpClient(),
+        graphqlProvider
+    ],
     exports: [RouterModule]
   })
   export class AppRoutingModule { }
