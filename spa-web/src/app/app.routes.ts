@@ -1,6 +1,6 @@
 import { provideRouter, RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './public/home/home.component';
-import { LoginComponent } from './public/login/login.component';
+import { HomeComponent } from './components/public/home/home.component';
+import { LoginComponent } from './components/public/login/login.component';
 import { NgModule, provideZoneChangeDetection } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { HttpClientModule, provideHttpClient } from '@angular/common/http';

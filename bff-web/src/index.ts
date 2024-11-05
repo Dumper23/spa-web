@@ -3,7 +3,7 @@ import { createHandler, HandlerOptions } from 'graphql-http/lib/use/express';
 import { createSchema } from './Schema'; // Import the schema
 import cors from 'cors';
 import { createConnection } from 'typeorm';
-import { Users } from './Entities/Users';
+import { User } from './Entities/User';
 
 // Define the server function
 const startServer = () => {
@@ -16,7 +16,7 @@ const startServer = () => {
     host: 'b9kpqu4lkqmw9crdieym-mysql.services.clever-cloud.com',
     logging: true,
     synchronize: false, // Change to false in production
-    entities: [Users],
+    entities: [User],
   })
     .then(async() => {
       const app = express();

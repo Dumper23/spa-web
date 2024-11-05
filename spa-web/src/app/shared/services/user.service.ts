@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Apollo, gql } from 'apollo-angular';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -33,6 +33,9 @@ export class UserService {
           uri: this.fullUrl,
         },
       })
-      .valueChanges.pipe(map((result: any) => result.data.users));
+      .valueChanges.pipe(
+        map((result: any) => result.data)
+      );
   }
+  
 }
