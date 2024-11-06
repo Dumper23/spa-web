@@ -49,7 +49,7 @@ export class HomeComponent {
     }
   }
 
-  async navigateToLogin() {
+  async checkUsers() {
     this.userService.getAllUsers().subscribe((response: UserData) => {
       let a = 0;
       response.getAllUsers.forEach((user) => {
