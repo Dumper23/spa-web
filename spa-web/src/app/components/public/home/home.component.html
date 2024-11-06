@@ -2,12 +2,29 @@
     <h1>
         Home Page!
     </h1>
-        <div class="createUser">
-            <input type="text" />
-            <input type="text" />
-            <input type="text" />
-        </div>
+        <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+            <div class="createUser">
+                <label for="name">Name:</label>
+                <input id="name" formControlName="name" />
+
+                <label for="middleName">Middle Name:</label>
+                <input id="middleName" formControlName="middleName" />
+
+                <label for="lastName">Last Name:</label>
+                <input id="lastName" formControlName="lastName" />
+
+                <label for="dni">DNI:</label>
+                <input id="dni" formControlName="dni" />
+
+                <label for="adult">Adult:</label>
+                <input type="checkbox" id="adult" formControlName="adult" />
+
+                <button type="submit" style="margin-top: 20px;" mat-flat-button [disabled]="userForm.invalid">
+                    Add User
+                </button>
+            </div>
+        </form>
     <button style="margin-top: 20px;" mat-flat-button (click)="navigateToLogin()">
-        Send
+        Check Users
     </button>
 </div>

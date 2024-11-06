@@ -14,7 +14,7 @@ export class UserService {
 
   constructor(private apollo: Apollo) { }
 
-  getUsers(): Observable<any> {
+  getAllUsers(): Observable<any> {
     return this.apollo
       .watchQuery<any>({
         query: gql`
@@ -37,5 +37,34 @@ export class UserService {
         map((result: any) => result.data)
       );
   }
-  
+
+  addUser(user: { name: string; middleName?: string; lastName?: string; dni: string; adult?: boolean }): Observable<any> {
+    return this.apollo
+      .mutate<any>({
+        mutation: gql`
+          mutation($name: String!, $middleName: String, $lastName: String, $dni: String!, $adult: Boolean) {
+            createUser(name: $name, middleName: $middleName, lastName: $lastName, dni: $dni, adult: $adult) {
+              Name
+              MiddleName
+              LastName
+              Adult
+              Dni
+            }
+          }
+        `,
+        variables: {
+          name: user.name,
+          middleName: user.middleName,
+          lastName: user.lastName,
+          dni: user.dni,
+          adult: user.adult ?? false,  // Default to false if not provided
+        },
+        context: {
+          uri: this.fullUrl,
+        },
+      })
+      .pipe(
+        map((result: any) => result.data)
+      );
+  }  
 }

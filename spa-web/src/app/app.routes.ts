@@ -7,6 +7,7 @@ import { HttpClientModule, provideHttpClient } from '@angular/common/http';
 import { SharedModule } from './shared/shared.module';
 import { provideClientHydration } from '@angular/platform-browser';
 import { graphqlProvider } from './graphql.provider';
+import { ReactiveFormsModule } from '@angular/forms';
 
 export const routes: Routes = [
     { path: '', redirectTo: '/home', pathMatch: 'full' },

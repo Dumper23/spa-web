@@ -1,5 +1,5 @@
 import { Resolver, Mutation, Arg } from 'type-graphql';
-import { Users } from '../Entities/User';
+import { User } from '../Entities/User';
 import { UserType } from '../Types/User';
 import { getRepository } from 'typeorm';
 
@@ -9,11 +9,11 @@ export class UserMutation {
   async createUser(
     @Arg('name') name: string,
     @Arg('middleName', { nullable: true }) middleName: string,
-    @Arg('lastName') lastName: string,
+    @Arg('lastName', { nullable: true }) lastName: string,
     @Arg('dni') dni: string,
     @Arg('adult', { defaultValue: false }) adult: boolean
   ): Promise<UserType> {
-    const userRepository = getRepository(Users);
+    const userRepository = getRepository(User);
 
     const user = userRepository.create({
       Name: name,
