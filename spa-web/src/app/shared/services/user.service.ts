@@ -29,6 +29,7 @@ export class UserService {
             }
           }
         `,
+        fetchPolicy: 'no-cache',
         context: {
           uri: this.fullUrl,
         },
@@ -52,6 +53,7 @@ export class UserService {
             }
           }
         `,
+        fetchPolicy: 'no-cache',
         variables: {
           name: user.name,
           middleName: user.middleName,

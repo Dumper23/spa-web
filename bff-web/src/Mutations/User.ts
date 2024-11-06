@@ -2,6 +2,7 @@ import { Resolver, Mutation, Arg } from 'type-graphql';
 import { User } from '../Entities/User';
 import { UserType } from '../Types/User';
 import { getRepository } from 'typeorm';
+import { AppDataSource } from '../DataSource';
 
 @Resolver()
 export class UserMutation {
@@ -13,17 +14,24 @@ export class UserMutation {
     @Arg('dni') dni: string,
     @Arg('adult', { defaultValue: false }) adult: boolean
   ): Promise<UserType> {
-    const userRepository = getRepository(User);
+    const userRepository = AppDataSource.getRepository(User);
 
-    const user = userRepository.create({
-      Name: name,
-      MiddleName: middleName,
-      LastName: lastName,
-      Dni: dni,
-      Adult: adult,
-    });
+    //Checking if user already exists!
+    const existingUser = await userRepository.findOne({ where: { Dni: dni} });
+    if (existingUser) {
+      throw new Error('User with this DNI already exists.');
+    }else{
+    
+      const user = userRepository.create({
+        Name: name,
+        MiddleName: middleName,
+        LastName: lastName,
+        Dni: dni,
+        Adult: adult,
+      });
 
-    await userRepository.save(user);
-    return user; // Return the created user
+      await userRepository.save(user);
+      return user;
+    }
   }
 }
