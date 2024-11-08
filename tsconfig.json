@@ -15,6 +15,11 @@
     "paths": {
       "*": ["node_modules/*"]
     },
+    "types": ["node"],  // This should be in the 'types' array
+    "typeRoots": [
+      "./node_modules/@types",  // Ensure this is set correctly
+      "./types"                 // If you have custom types in a 'types' directory
+    ]
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules", "**/*.spec.ts"]
