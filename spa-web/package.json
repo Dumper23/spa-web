@@ -4,10 +4,10 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build:prod": "ng build --configuration production",
+    "build:prod": "ng build --configuration production --output-path=dist",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "deploy": "gh-pages -d dist/spa-web"
+    "deploy": "gh-pages -d dist"
   },
   "private": true,
   "dependencies": {
