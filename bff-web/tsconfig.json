@@ -11,6 +11,7 @@
     "baseUrl": "./src",
     "outDir": "./dist",
     "rootDir": "./src",
+    "types": ["node"],
     "paths": {
       "*": ["node_modules/*"]
     }
