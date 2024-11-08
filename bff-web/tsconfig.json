@@ -1,9 +1,10 @@
 {
   "compilerOptions": {
-    "target": "es2017", // or higher
+    "target": "ES6", // or higher
     "module": "commonjs", // or higher
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
+    "resolveJsonModule": true,
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
