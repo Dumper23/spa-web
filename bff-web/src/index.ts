@@ -1,12 +1,14 @@
 import express from 'express';
+import dotenv from 'dotenv';
 import { createHandler, HandlerOptions } from 'graphql-http/lib/use/express';
 import { createSchema } from './Schema'; // Import the schema
 import cors from 'cors';
 import { AppDataSource } from './DataSource';
 
+
 // Define the server function
 const startServer = () => {
-  
+  dotenv.config();
 
   AppDataSource.initialize()
     .then(async() => {
@@ -20,8 +22,8 @@ const startServer = () => {
 
       app.use('/graphql', createHandler(options));
 
-      app.listen(3001, () => {
-        console.log('Server running on port: 3001');
+      app.listen(process.env.SERVER_PORT || 3000, () => {
+        console.log(`Server is running on http://localhost: ${process.env.SERVER_PORT || 3000}`);
       });
     })
     .catch((err) => console.error('Database connection error:', err));
