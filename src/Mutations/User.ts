@@ -16,15 +16,22 @@ export class UserMutation {
   ): Promise<UserType> {
     const userRepository = await AppDataSource.getRepository(User);
 
-    const user = userRepository.create({
-      Name: name,
-      MiddleName: middleName,
-      LastName: lastName,
-      Dni: dni,
-      Adult: adult,
-    });
+    //Checking if user already exists!
+    const existingUser = await userRepository.findOne({ where: { Dni: dni} });
+    if (existingUser) {
+      throw new Error('User with this DNI already exists.');
+    }else{
+    
+      const user = userRepository.create({
+        Name: name,
+        MiddleName: middleName,
+        LastName: lastName,
+        Dni: dni,
+        Adult: adult,
+      });
 
-    await userRepository.save(user);
-    return user; // Return the created user
+      await userRepository.save(user);
+      return user;
+    }
   }
 }

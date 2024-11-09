@@ -11,7 +11,7 @@ export class UserType {
   @Field({ nullable: true })
   MiddleName?: string;
 
-  @Field()
+  @Field({ nullable: true })
   LastName!: string;
 
   @Field()
@@ -19,4 +19,7 @@ export class UserType {
 
   @Field({ defaultValue: false })
   Adult!: boolean;
+
+  @Field()
+  Password!: string;
 }

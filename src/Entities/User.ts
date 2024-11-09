@@ -3,20 +3,23 @@ import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
 @Entity()
 export class User {
   @PrimaryGeneratedColumn()
-  ID!: number;  // Auto-incremented primary key
+  ID!: number;
 
   @Column()
-  Name!: string;  // User's name
+  Name!: string;
 
   @Column({ nullable: true })
-  MiddleName?: string;  // User's middle name (optional)
+  MiddleName?: string;
+
+  @Column({ nullable: true })
+  LastName!: string;
 
   @Column()
-  LastName!: string;  // User's last name
-
-  @Column()
-  Dni!: string;  // User's DNI (national identification number)
+  Dni!: string;
 
   @Column({ default: false })
-  Adult!: boolean;  // User's adult status (default is false)
+  Adult!: boolean;
+
+  @Column()
+  Password!: string;
 }
