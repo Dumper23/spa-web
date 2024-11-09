@@ -15,18 +15,8 @@ import { RegisterComponent } from '../register/register.component';
 })
 export class HomeComponent {
   constructor(
-    private readonly userService: UserService,
   ){}
 
-  async checkUsers() {
-    this.userService.getAllUsers().subscribe((response: UserData) => {
-      let a = 0;
-      response.getAllUsers.forEach((user) => {
-        console.log(a, user.Name, user.MiddleName, user.LastName, user.Dni, user.Adult);
-        a++;
-      });
-    });
-  }
 
   openTab(evt: Event, cityName: string): void {
     const tabcontent = document.getElementsByClassName('tabcontent');

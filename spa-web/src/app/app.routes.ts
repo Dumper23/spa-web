@@ -2,12 +2,10 @@ import { provideRouter, RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './components/public/home/home.component';
 import { LoginComponent } from './components/public/login/login.component';
 import { NgModule, provideZoneChangeDetection } from '@angular/core';
-import { MatButtonModule } from '@angular/material/button';
-import { HttpClientModule, provideHttpClient } from '@angular/common/http';
+import { provideHttpClient } from '@angular/common/http';
 import { SharedModule } from './shared/shared.module';
 import { provideClientHydration } from '@angular/platform-browser';
 import { graphqlProvider } from './graphql.provider';
-import { ReactiveFormsModule } from '@angular/forms';
 import { PrivateHomeComponent } from './components/private/private-home/private-home.component';
 import { AuthGuard } from './shared/guards/auth.guard';
 
