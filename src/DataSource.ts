@@ -10,7 +10,7 @@ export const AppDataSource = new DataSource({
     port: 3306,
     host: 'b9kpqu4lkqmw9crdieym-mysql.services.clever-cloud.com',
     logging: true,
-    synchronize: false, // Change to false in production
+    synchronize: false,
     entities: [User],
     cache: true
   })

@@ -4,7 +4,7 @@ import { createHandler, HandlerOptions } from 'graphql-http/lib/use/express';
 import { createSchema } from './Schema'; // Import the schema
 import cors from 'cors';
 import { AppDataSource } from './DataSource';
-
+import jwt from 'jsonwebtoken';
 
 // Define the server function
 const startServer = async() => {
@@ -22,6 +22,18 @@ const startServer = async() => {
       const options: HandlerOptions = { schema };
 
       await app.use('/graphql', createHandler(options));
+
+      // Protect routes using JWT
+      const authenticateJWT = (req: any, res: any, next: any) => {
+        const token = req.header('Authorization')?.replace('Bearer ', '');
+        if (!token) return res.status(403).send('Token required');
+
+        jwt.verify(token, process.env.JWT_SECRET!, (err: any, user: any) => {
+          if (err) return res.status(403).send('Invalid token');
+          req.user = user;
+          next();
+        });
+      };
 
       const port = process.env.SERVER_PORT || '3000';
       const host = process.env.SERVER_HOST || '0.0.0.0';
