@@ -11,14 +11,14 @@ import { AppDataSource } from './DataSource';
 // Define the server function
 const startServer = () => {
   dotenv.config();
+  const app = express();
+  app.use(cors());
+  app.use(express.json());
+  
 
   AppDataSource.initialize()
     .then(async() => {
-      const app = express();
-      app.use(cors());
-      app.use(express.json());
-
-      // TypeScript expects a schema of type GraphQLSchema
+       // TypeScript expects a schema of type GraphQLSchema
       const schema = await createSchema();
       const options: HandlerOptions = { schema }; // Specify the schema here
 
