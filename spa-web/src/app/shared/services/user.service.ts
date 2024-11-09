@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Apollo, gql } from 'apollo-angular';
 import { Observable } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
-import { environemnt } from '../../environment/Environment';
+import { environemnt } from '../../environment/environment';
 
 @Injectable({
   providedIn: 'root',
