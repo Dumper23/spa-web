@@ -8,7 +8,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "deploy:clean": "npx angular-cli-ghpages --dir=dist",
-    "deploy": "gh-pages -d dist/spa-web"
+    "deploy": "gh-pages -d dist"
   },
   "private": true,
   "dependencies": {
