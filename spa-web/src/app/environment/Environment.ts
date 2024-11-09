@@ -4,6 +4,7 @@ export const environemnt = {
     DB_NAME: 'b9kpqu4lkqmw9crdieym',
     DB_USER:  'uilsb3gwjphb6sgs',
     DB_PASSWORD: 'LeoYchgF00xMrIEirs8w',
-    DB_PORT: '3306'
+    DB_PORT: '3306',
+    SERVER_HOST:'https://spa-web.onrender.com'
 }
 

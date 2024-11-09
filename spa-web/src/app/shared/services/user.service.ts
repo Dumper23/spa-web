@@ -9,7 +9,7 @@ import { map, tap } from 'rxjs/operators';
 export class UserService {
 
   private PATH = "/graphql";
-  private HOST = "http://localhost:3001";
+  private HOST = "https://spa-web.onrender.com:3001";
   private fullUrl = this.HOST + this.PATH;
 
   constructor(private apollo: Apollo) { }
