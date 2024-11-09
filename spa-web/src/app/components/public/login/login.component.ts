@@ -8,6 +8,7 @@ import { CommonModule } from '@angular/common';
 import { MatButton, MatButtonModule } from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -24,6 +25,7 @@ export class LoginComponent {
   constructor(
     private fb: FormBuilder,
     private readonly userService: UserService,
+    private readonly router: Router
   ){
     this.loginForm = this.fb.group({
       dni: ['', [Validators.required, dniValidator()]],
@@ -37,7 +39,9 @@ export class LoginComponent {
       const values = this.loginForm.value;
       this.userService.login(values.dni, values.password).subscribe({
         next:(response)=>{
-          localStorage.setItem('access_token', response);
+          console.log(response.login);
+          localStorage.setItem('access_token', response.login);
+          this.router.navigate(['']);
         },
         error:(err)=>{
           this.error = err.message;

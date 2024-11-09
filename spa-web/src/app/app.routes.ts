@@ -8,16 +8,19 @@ import { SharedModule } from './shared/shared.module';
 import { provideClientHydration } from '@angular/platform-browser';
 import { graphqlProvider } from './graphql.provider';
 import { ReactiveFormsModule } from '@angular/forms';
+import { PrivateHomeComponent } from './components/private/private-home/private-home.component';
+import { AuthGuard } from './shared/guards/auth.guard';
 
 export const routes: Routes = [
     { path: '', redirectTo: '/home', pathMatch: 'full' },
     { path: 'home', component: HomeComponent },
     { path: 'login', component: LoginComponent },
+    { path: 'private/home', component: PrivateHomeComponent, canActivate: [AuthGuard]},
     { path: '**', redirectTo: '/home' },
 ];
 
 @NgModule({
-    imports: [RouterModule.forRoot(routes), MatButtonModule, SharedModule],
+    imports: [RouterModule.forRoot(routes), SharedModule],
     providers: [
         provideZoneChangeDetection({ eventCoalescing: true }),
         provideRouter(routes),

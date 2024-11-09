@@ -1,4 +1,4 @@
-<p>register works!</p>
+<h5>Register</h5>
 <div style="justify-items: center;">
     <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
         <div class="createUser">
@@ -17,15 +17,15 @@
             <label for="lastName">Last Name:</label>
             <input id="lastName" formControlName="lastName" />
 
-            <label for="dni">DNI<span style="color: red">*</span>:</label>
-            <input id="dni" formControlName="dni" />
+            <label for="registerDni">DNI<span style="color: red">*</span>:</label>
+            <input id="registerDni" formControlName="dni" />
             <div *ngIf="userForm.get('dni')?.invalid && userForm.get('dni')?.touched">
                 <small *ngIf="userForm.get('dni')?.hasError('required')">DNI is required.</small>
                 <small *ngIf="userForm.get('dni')?.hasError('invalidDni')">Invalid DNI format.</small>
             </div>
 
-            <label for="password">Password<span style="color: red">*</span>:</label>
-            <input id="password" formControlName="password" type="password"/>
+            <label for="registerPassword">Password<span style="color: red">*</span>:</label>
+            <input id="registerPassword" formControlName="password" type="password"/>
             <div *ngIf="userForm.get('password')?.touched && userForm.get('password')?.invalid">
                 <small *ngIf="userForm.get('password')?.hasError('required')">Password is required.</small>
                 <small *ngIf="userForm.get('password')?.hasError('invalidPassword')">Password has invalid characters, only alphanumeric characters.</small>
@@ -39,7 +39,7 @@
             @if(error){<p style="color: red;">Error: {{error}}</p>}
 
             <button type="submit" style="margin-top: 20px;" mat-flat-button [disabled]="userForm.invalid">
-                Add User
+                Register
             </button>
         </div>
     </form>

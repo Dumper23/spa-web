@@ -1,8 +1,19 @@
 <div style="justify-items: center;">
-    <h2> Login to access the private area </h2>
+    <h5> Register or Login to access the private area </h5>
 
-    <app-login></app-login>
-    <app-register></app-register>
+    <div class="tab">
+        <button class="tablinks" (click)="openTab($event, 'Register')">Register</button>
+        <button class="tablinks" (click)="openTab($event, 'Login')">Login</button>
+      </div>
+      
+      <!-- Tab content -->
+      <div id="Register" class="tabcontent">
+        <app-register></app-register>
+      </div>
+      
+      <div id="Login" class="tabcontent">
+        <app-login></app-login>
+      </div>
 
     <button style="margin-top: 20px;" mat-flat-button (click)="checkUsers()">
         Check Users
