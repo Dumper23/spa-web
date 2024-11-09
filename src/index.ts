@@ -8,7 +8,9 @@ import { AppDataSource } from './DataSource';
 
 // Define the server function
 const startServer = async() => {
-  await dotenv.config();
+  const envFile = process.env.NODE_ENV === 'production' ? '.env.production' : '.env.development';
+  await dotenv.config({ path: envFile });
+
   const app = await express();
   await app.use(cors());
   await app.use(express.json());
@@ -16,16 +18,12 @@ const startServer = async() => {
 
   AppDataSource.initialize()
     .then(async() => {
-       // TypeScript expects a schema of type GraphQLSchema
       const schema = await createSchema();
-      const options: HandlerOptions = { schema }; // Specify the schema here
+      const options: HandlerOptions = { schema };
 
       await app.use('/graphql', createHandler(options));
 
-      // const port = 3000;
-      // const host = 'localhost';
-
-      const port = process.env.DB_PORT || '3000';
+      const port = process.env.SERVER_PORT || '3000';
       const host = process.env.SERVER_HOST || '0.0.0.0';
 
       app.listen(parseInt(port), host, () => {
