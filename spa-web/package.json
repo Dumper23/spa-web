@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build:prod": "ng build --configuration production --output-path=dist",
+    "build:prod": "rm -r ./dist && ng build --configuration production --output-path=dist",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "deploy": "npx angular-cli-ghpages --dir=dist"
