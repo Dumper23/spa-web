@@ -23,7 +23,7 @@ const startServer = async() => {
 
       await app.use('/graphql', createHandler(options));
 
-      // Protect routes using JWT
+      // TODO: Protect routes using JWT
       const authenticateJWT = (req: any, res: any, next: any) => {
         const token = req.header('Authorization')?.replace('Bearer ', '');
         if (!token) return res.status(403).send('Token required');
