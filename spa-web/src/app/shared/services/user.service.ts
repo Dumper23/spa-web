@@ -40,12 +40,12 @@ export class UserService {
       );
   }
 
-  addUser(user: { name: string; middleName?: string; lastName?: string; dni: string; adult?: boolean }): Observable<any> {
+  addUser(user: { name: string; middleName?: string; lastName?: string; dni: string; adult?: boolean, password: string }): Observable<any> {
     return this.apollo
       .mutate<any>({
         mutation: gql`
-          mutation($name: String!, $middleName: String, $lastName: String, $dni: String!, $adult: Boolean) {
-            createUser(name: $name, middleName: $middleName, lastName: $lastName, dni: $dni, adult: $adult) {
+          mutation($name: String!, $middleName: String, $lastName: String, $dni: String!, $adult: Boolean, $password: String!) {
+            createUser(name: $name, middleName: $middleName, lastName: $lastName, dni: $dni, adult: $adult, password: $password) {
               Name
               MiddleName
               LastName
@@ -60,7 +60,8 @@ export class UserService {
           middleName: user.middleName,
           lastName: user.lastName,
           dni: user.dni,
-          adult: user.adult ?? false,  // Default to false if not provided
+          adult: user.adult ?? false,
+          password: user.password
         },
         context: {
           uri: this.fullUrl,

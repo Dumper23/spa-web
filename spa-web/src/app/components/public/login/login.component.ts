@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { UserService } from '../../../shared/services/user.service';
 import { dniValidator } from '../../../shared/validators/dni-validator';
 import { nameValidator } from '../../../shared/validators/name-validator';
-import { passwordValidator } from '../../../shared/validators/password-validator';
+import { loginPasswordValidator } from '../../../shared/validators/password-validator';
 import { CommonModule } from '@angular/common';
 import { MatButton, MatButtonModule } from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
@@ -27,7 +27,7 @@ export class LoginComponent {
   ){
     this.loginForm = this.fb.group({
       dni: ['', [Validators.required, dniValidator()]],
-      password: ['', [Validators.required, passwordValidator()]],
+      password: ['', [Validators.required, loginPasswordValidator()]],
     });
   }
 

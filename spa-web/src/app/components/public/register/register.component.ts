@@ -4,6 +4,7 @@ import { UserService } from '../../../shared/services/user.service';
 import { dniValidator } from '../../../shared/validators/dni-validator';
 import { nameValidator } from '../../../shared/validators/name-validator';
 import { CommonModule } from '@angular/common';
+import { registerPasswordValidator } from '../../../shared/validators/password-validator';
 
 @Component({
   selector: 'app-register',
@@ -25,7 +26,8 @@ export class RegisterComponent {
       middleName: [''],
       lastName: [''],
       dni: ['', [Validators.required, dniValidator()]],
-      adult: [false]
+      adult: [false],
+      password: ['', [Validators.required, registerPasswordValidator()]]
     });
   }
 

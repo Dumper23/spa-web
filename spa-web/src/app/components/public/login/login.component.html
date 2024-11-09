@@ -14,8 +14,6 @@
           <div *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.invalid">
               <small *ngIf="loginForm.get('password')?.hasError('required')">password is required.</small>
               <small *ngIf="loginForm.get('password')?.hasError('invalidPassword')">password has invalid characters, only alphanumeric characters.</small>
-              <small *ngIf="loginForm.get('password')?.hasError('minLengthError')">password must be at least 8 characters.</small>
-              <small *ngIf="loginForm.get('password')?.hasError('maxLengthError')">password can't have more than 20 characters.</small>
           </div>
 
         @if(error){<p style="color: red;">Error: {{error}}</p>}
