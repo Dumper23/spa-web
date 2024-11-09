@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node ./dist/index.ts",
-    "build": "tsc",
+    "build": "npm i && tsc",
     "dev": "nodemon ./src/index.ts"
   },
   "author": "",
