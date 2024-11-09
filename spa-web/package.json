@@ -7,7 +7,8 @@
     "build:prod": "rm -r ./dist && ng build --configuration production --output-path=dist",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "deploy": "npx angular-cli-ghpages --dir=dist"
+    "deploy:clean": "npx angular-cli-ghpages --dir=dist",
+    "deploy": "gh-pages -d dist/spa-web"
   },
   "private": true,
   "dependencies": {
