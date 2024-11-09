@@ -2,7 +2,12 @@
     <h1>
         Home Page! :P
     </h1>
-        <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+    <h2> Login to access the private area </h2>
+
+    <app-login></app-login>
+
+    
+        <!-- <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
             <div class="createUser">
                 
                 <label for="name">Name<span style="color: red">*</span>:</label>
@@ -35,7 +40,7 @@
                     Add User
                 </button>
             </div>
-        </form>
+        </form> -->
     <button style="margin-top: 20px;" mat-flat-button (click)="checkUsers()">
         Check Users
     </button>

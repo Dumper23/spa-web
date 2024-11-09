@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Apollo, gql } from 'apollo-angular';
 import { Observable } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
+import { environemnt } from '../../environment/Environment';
 
 @Injectable({
   providedIn: 'root',
@@ -9,7 +10,7 @@ import { map, tap } from 'rxjs/operators';
 export class UserService {
 
   private PATH = "/graphql";
-  private HOST = "https://spa-web.onrender.com";
+  private HOST = environemnt.SERVER_HOST;
   private fullUrl = this.HOST + this.PATH;
 
   constructor(private apollo: Apollo) { }

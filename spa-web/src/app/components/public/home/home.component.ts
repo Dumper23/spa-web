@@ -6,12 +6,13 @@ import { UserData } from '../../../shared/Interfaces/user';
 import { CommonModule } from '@angular/common';
 import { dniValidator } from '../../../shared/validators/dni-validator';
 import { nameValidator } from '../../../shared/validators/name-validator';
+import { LoginComponent } from "../login/login.component";
 
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [MatButtonModule, ReactiveFormsModule, CommonModule],
+  imports: [MatButtonModule, ReactiveFormsModule, CommonModule, LoginComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })

@@ -5,6 +5,6 @@ export const environemnt = {
     DB_USER:  'uilsb3gwjphb6sgs',
     DB_PASSWORD: 'LeoYchgF00xMrIEirs8w',
     DB_PORT: '3306',
-    SERVER_HOST:'https://spa-web.onrender.com'
+    SERVER_HOST:'http://localhost:3000'
 }
 
