@@ -41,7 +41,7 @@ export class LoginComponent {
         next:(response)=>{
           console.log(response.login);
           localStorage.setItem('access_token', response.login);
-          this.router.navigate(['']);
+          this.router.navigate(['/private/home']);
         },
         error:(err)=>{
           this.error = err.message;

@@ -77,7 +77,7 @@
               "browserTarget": "spa-web:build:development"
             }
           },
-          "defaultConfiguration": "development"
+          "defaultConfiguration": "production"
         }
       }
     }
