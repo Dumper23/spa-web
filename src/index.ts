@@ -26,7 +26,7 @@ const startServer = async() => {
       // const host = 'localhost';
 
       const port = process.env.DB_PORT || '3000';
-      const host = process.env.SERVER_HOST || 'spa-web.onrender.com';
+      const host = process.env.SERVER_HOST || '0.0.0.0';
 
       app.listen(parseInt(port), host, () => {
         console.log(`Server is running on ${host}:${port} pointing to database ${process.env.DB_NAME} hosted on: ${process.env.DB_HOST}`);
