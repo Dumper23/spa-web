@@ -25,7 +25,7 @@ const startServer = () => {
       app.use('/graphql', createHandler(options));
 
       app.listen(process.env.SERVER_PORT || 3000, () => {
-        console.log(`Server is running on ${process.env.SERVER_HOST || 'https://spa-web.onrender.com'}:${process.env.SERVER_PORT || 3000}`);
+        console.log(`Server is running on ${process.env.SERVER_HOST || 'https://spa-web.onrender.com'}:${process.env.SERVER_PORT || 3000} pointing to database ${process.env.DB_NAME} hosted on: ${process.env.DB_HOST}`);
       });
     })
     .catch((err) => console.error('Database connection error:', err));
