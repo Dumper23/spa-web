@@ -70,4 +70,27 @@ export class UserService {
         map((result: any) => result.data)
       );
   }  
+
+  login(dni: string, password: string): Observable<any> {
+    return this.apollo
+      .watchQuery<any>({
+        query: gql`
+          query login($dni: String!, $password: String!) {
+            login(dni: $dni, password: $password)
+          }
+        `,
+        variables: {
+          dni,
+          password
+        },
+        fetchPolicy: 'no-cache',
+        context: {
+          uri: this.fullUrl,
+        },
+      })
+      .valueChanges.pipe(
+        map((result: any) => result.data)
+      );
+  }
+  
 }

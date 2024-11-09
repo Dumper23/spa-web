@@ -1,1 +1,37 @@
 <p>register works!</p>
+<div style="justify-items: center;">
+    <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+        <div class="createUser">
+            
+            <label for="name">Name<span style="color: red">*</span>:</label>
+            <input id="name" formControlName="name" />
+            <div *ngIf="userForm.get('name')?.touched && userForm.get('name')?.invalid">
+                <small *ngIf="userForm.get('name')?.hasError('required')">Name is required.</small>
+                <small *ngIf="userForm.get('name')?.hasError('minLengthError')">Name must be at least 2 characters.</small>
+                <small *ngIf="userForm.get('name')?.hasError('maxLengthError')">Name can't have more than 15 characters.</small>
+            </div>
+
+            <label for="middleName">Middle Name:</label>
+            <input id="middleName" formControlName="middleName" />
+
+            <label for="lastName">Last Name:</label>
+            <input id="lastName" formControlName="lastName" />
+
+            <label for="dni">DNI<span style="color: red">*</span>:</label>
+            <input id="dni" formControlName="dni" />
+            <div *ngIf="userForm.get('dni')?.invalid && userForm.get('dni')?.touched">
+                <small *ngIf="userForm.get('dni')?.hasError('required')">DNI is required.</small>
+                <small *ngIf="userForm.get('dni')?.hasError('invalidDni')">Invalid DNI format.</small>
+            </div>
+
+            <label for="adult">Adult:</label>
+            <input type="checkbox" id="adult" formControlName="adult" />
+
+            @if(error){<p style="color: red;">Error: {{error}}</p>}
+
+            <button type="submit" style="margin-top: 20px;" mat-flat-button [disabled]="userForm.invalid">
+                Add User
+            </button>
+        </div>
+    </form>
+</div>
