@@ -2,6 +2,7 @@ import { Resolver, Mutation, Arg } from 'type-graphql';
 import { User } from '../Entities/User';
 import { UserType } from '../Types/User';
 import { getRepository } from 'typeorm';
+import { AppDataSource } from '../DataSource';
 
 @Resolver()
 export class UserMutation {
@@ -13,7 +14,7 @@ export class UserMutation {
     @Arg('dni') dni: string,
     @Arg('adult', { defaultValue: false }) adult: boolean
   ): Promise<UserType> {
-    const userRepository = getRepository(User);
+    const userRepository = await AppDataSource.getRepository(User);
 
     const user = userRepository.create({
       Name: name,
