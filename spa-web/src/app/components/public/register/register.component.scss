@@ -18,3 +18,7 @@ small {
 .registerForm{
     width: 100%;
 }
+
+::ng-deep .mat-mdc-tab-body-content {
+    overflow: hidden !important; /* Disable scroll */
+}
