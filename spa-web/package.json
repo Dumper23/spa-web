@@ -5,7 +5,7 @@
     "ng": "ng",
     "start": "ng serve --configuration production",
     "start:dev": "ng serve --configuration development",
-    "build:prod": "rm -r ./dist && ng build --configuration production --output-path=dist",
+    "build:prod": "rm -r ./dist && ng build --configuration production --output-path=dist && cp ./dist/index.html ./dist/404.html",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "deploy:clean": "npx angular-cli-ghpages --dir=dist",

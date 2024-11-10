@@ -8,6 +8,7 @@ import { provideClientHydration } from '@angular/platform-browser';
 import { graphqlProvider } from './graphql.provider';
 import { PrivateHomeComponent } from './components/private/private-home/private-home.component';
 import { AuthGuard } from './shared/guards/auth.guard';
+import { CommonModule } from '@angular/common';
 
 export const routes: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -18,7 +19,7 @@ export const routes: Routes = [
 ];
 
 @NgModule({
-    imports: [RouterModule.forRoot(routes), SharedModule],
+    imports: [RouterModule.forRoot(routes), SharedModule, CommonModule],
     providers: [
         provideZoneChangeDetection({ eventCoalescing: true }),
         provideRouter(routes),
