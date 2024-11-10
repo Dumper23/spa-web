@@ -1,5 +1,26 @@
-<p>Welcome to your private home!</p>
 
-<button style="margin-top: 20px;" mat-flat-button (click)="checkUsers()">
-    Check Users
-</button>
+<div class="privateHomeContainer">
+    <div class="privateHomeSection">
+        <h5>Welcome to your private home!</h5>
+    </div>
+    <div class="privateHomeSection">
+        <button style="margin-top: 20px;" (click)="checkUsers()">
+            Show Active User List
+        </button>
+    </div>
+    <div class="privateHomeSection">
+        <div class="userList">
+            @for (user of userList; track $index) {
+                <div class="userItem">
+                    <p class="itemHeader">User {{$index}}:</p>
+                    <div class="divider"></div>
+                    <p>· {{user.Name}}</p>
+                    @if(user.MiddleName){<p>· {{user.MiddleName}}</p>}
+                    @if(user.LastName){<p>· {{user.LastName}}</p>}
+                    <p>· {{user.Dni}}</p>
+                    <p>· {{user.Adult ? 'Adult' : 'Minor'}}</p>
+                </div>
+            }
+        </div>
+    </div>
+</div>

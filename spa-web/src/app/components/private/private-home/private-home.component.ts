@@ -10,6 +10,7 @@ import { UserData } from '../../../shared/Interfaces/user';
   styleUrl: './private-home.component.scss'
 })
 export class PrivateHomeComponent {
+  public userList: any;
 
   constructor(private readonly userService: UserService){}
 
@@ -17,6 +18,7 @@ export class PrivateHomeComponent {
   async checkUsers() {
     this.userService.getAllUsers().subscribe((response: UserData) => {
       let a = 0;
+      this.userList = response.getAllUsers;
       response.getAllUsers.forEach((user) => {
         console.log(a, user.Name, user.MiddleName, user.LastName, user.Dni, user.Adult);
         a++;

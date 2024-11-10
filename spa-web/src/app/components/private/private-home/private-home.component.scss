@@ -1,0 +1,40 @@
+.privateHomeContainer{
+    width: 100%;
+}
+
+.privateHomeSection{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.userList{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-top: 25px;
+    max-width: 1000px;
+}
+
+.userItem{
+        max-width: 150px;
+        min-width: 150px;
+        max-height: 260px;
+        min-height: 260px;
+        padding: 20px;
+        border: 1px solid black;
+}
+
+.itemHeader{
+    margin: 0px;
+    font-size: 16px;
+}
+
+.divider{
+    border-top: 4px solid black;
+    border-radius: 3px;
+    width: 100%;
+    margin-bottom: 10px;
+}
