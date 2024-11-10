@@ -19,5 +19,5 @@ export const appConfig: ApplicationConfig = {
         }),
         cache: new InMemoryCache(),
       };
-    }), provideAnimationsAsync()]
+    }), provideAnimationsAsync(), provideAnimationsAsync()]
 };

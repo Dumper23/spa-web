@@ -1,25 +1,27 @@
-<h5>Login</h5>
+<div class="loginContainer">
+    <h5>Login</h5>
 
-<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-    <div class="loginInputs">
-        <label for="loginDni">DNI<span style="color: red">*</span>:</label>
-        <input id="loginDni" formControlName="dni" />
-        <div *ngIf="loginForm.get('dni')?.invalid && loginForm.get('dni')?.touched">
-            <small *ngIf="loginForm.get('dni')?.hasError('required')">DNI is required.</small>
-            <small *ngIf="loginForm.get('dni')?.hasError('invalidDni')">Invalid DNI format.</small>
-          </div>
+    <form class="loginForm" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <div class="loginInputs">
+            <label for="loginDni">DNI<span style="color: red">*</span>:</label>
+            <input id="loginDni" formControlName="dni" />
+            <div *ngIf="loginForm.get('dni')?.invalid && loginForm.get('dni')?.touched">
+                <small *ngIf="loginForm.get('dni')?.hasError('required')">DNI is required.</small>
+                <small *ngIf="loginForm.get('dni')?.hasError('invalidDni')">Invalid DNI format.</small>
+            </div>
 
-          <label for="loginPassword">Password<span style="color: red">*</span>:</label>
-          <input id="loginPassword" formControlName="password" type="password"/>
-          <div *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.invalid">
-              <small *ngIf="loginForm.get('password')?.hasError('required')">password is required.</small>
-              <small *ngIf="loginForm.get('password')?.hasError('invalidPassword')">password has invalid characters, only alphanumeric characters.</small>
-          </div>
+            <label for="loginPassword">Password<span style="color: red">*</span>:</label>
+            <input id="loginPassword" formControlName="password" type="password"/>
+            <div *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.invalid">
+                <small *ngIf="loginForm.get('password')?.hasError('required')">password is required.</small>
+                <small *ngIf="loginForm.get('password')?.hasError('invalidPassword')">password has invalid characters, only alphanumeric characters.</small>
+            </div>
 
-        @if(error){<p style="color: red;">Error: {{error}}</p>}
+            @if(error){<p style="color: red;">Error: {{error}}</p>}
 
-        <button mat-flat-button type="submit" style="margin-top: 20px;" [disabled]="loginForm.invalid">
-            Login
-        </button>
-    </div>
-</form>
+            <button mat-flat-button type="submit" style="margin-top: 20px;" [disabled]="loginForm.invalid">
+                Login
+            </button>
+        </div>
+    </form>
+</div>

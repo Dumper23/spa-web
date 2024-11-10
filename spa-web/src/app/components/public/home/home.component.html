@@ -1,16 +1,20 @@
 <div style="justify-items: center;">
     <h5> Register or Login to access the private area </h5>
 
-    <div class="tab">
-        <button class="tablinks" (click)="openTab($event, 'Register')">Register</button>
-        <button class="tablinks" (click)="openTab($event, 'Login')">Login</button>
-      </div>
-      
-      <div id="Register" class="tabcontent">
-        <app-register></app-register>
-      </div>
-      
-      <div id="Login" class="tabcontent">
-        <app-login></app-login>
-      </div>
+    <mat-tab-group (selectedTabChange)="onTabChange($event)" class="tabGroup">
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <mat-icon class="example-tab-icon">app_registration</mat-icon>
+          Register
+        </ng-template> 
+        @if(selectedTabIndex == 0){<app-register></app-register>}
+      </mat-tab>
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <mat-icon class="example-tab-icon">login</mat-icon>
+          Login
+        </ng-template> 
+        @if(selectedTabIndex == 1){<app-login></app-login> }
+      </mat-tab>
+    </mat-tab-group>
 </div>
