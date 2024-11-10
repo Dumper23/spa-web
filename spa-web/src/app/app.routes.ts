@@ -10,11 +10,11 @@ import { PrivateHomeComponent } from './components/private/private-home/private-
 import { AuthGuard } from './shared/guards/auth.guard';
 
 export const routes: Routes = [
-    { path: '', redirectTo: '/home', pathMatch: 'full' },
+    { path: '', redirectTo: 'home', pathMatch: 'full' },
     { path: 'home', component: HomeComponent },
     { path: 'login', component: LoginComponent },
     { path: 'private/home', component: PrivateHomeComponent, canActivate: [AuthGuard]},
-    { path: '**', redirectTo: '/home' },
+    { path: '**', redirectTo: 'home' },
 ];
 
 @NgModule({
