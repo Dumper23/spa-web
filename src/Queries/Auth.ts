@@ -35,4 +35,19 @@ export class AuthResolver {
 
     return token; 
     }
+
+    //Public end-point, consider adding a maximum request check
+    @Query(() => Boolean)
+        async validateToken( @Arg('token') token: string ): Promise<boolean> {
+        if (!token) {
+        return false;
+        }
+
+        try {
+            jwt.verify(token, process.env.JWT_SECRET!);
+            return true;
+        } catch (error) {
+            return false;
+        }
+    }
 }

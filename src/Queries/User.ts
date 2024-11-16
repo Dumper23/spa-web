@@ -1,4 +1,4 @@
-import { Resolver, Query, Arg } from 'type-graphql';
+import { Resolver, Query, Arg, Ctx } from 'type-graphql';
 import { User } from '../Entities/User';
 import { UserType } from '../Types/User';
 import { AppDataSource } from '../DataSource';
@@ -7,7 +7,7 @@ import { AppDataSource } from '../DataSource';
 export class UserResolver {
   @Query(() => [UserType])
   async getAllUsers(): Promise<UserType[]> {
-    const userRepository = await AppDataSource.getRepository(User);
+    const userRepository = await AppDataSource.getRepository(User);    
     return await userRepository.find(); // Fetch all users
   }
 
