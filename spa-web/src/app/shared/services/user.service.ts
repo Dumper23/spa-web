@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Apollo, gql } from 'apollo-angular';
 import { Observable } from 'rxjs';
-import { map, tap } from 'rxjs/operators';
-import { environemnt } from '../../environment/environment';
+import { map } from 'rxjs/operators';
+import { environemnt } from '../../environment/Environment';
+import { TokenService } from './token.service';
 
 @Injectable({
   providedIn: 'root',
@@ -13,7 +14,7 @@ export class UserService {
   private HOST = environemnt.SERVER_HOST;
   private fullUrl = this.HOST + this.PATH;
 
-  constructor(private apollo: Apollo) { }
+  constructor(private apollo: Apollo, private readonly tokenService: TokenService) { }
 
   getAllUsers(): Observable<any> {
     return this.apollo
@@ -32,6 +33,9 @@ export class UserService {
         `,
         fetchPolicy: 'no-cache',
         context: {
+          headers: {
+            Authorization: `Bearer ${this.tokenService.getAccessToken()}`,
+          },
           uri: this.fullUrl,
         },
       })
@@ -44,7 +48,7 @@ export class UserService {
     return this.apollo
       .mutate<any>({
         mutation: gql`
-          mutation($name: String!, $middleName: String, $lastName: String, $dni: String!, $adult: Boolean, $password: String!) {
+          mutation CreateUser($name: String!, $middleName: String, $lastName: String, $dni: String!, $adult: Boolean, $password: String!) {
             createUser(name: $name, middleName: $middleName, lastName: $lastName, dni: $dni, adult: $adult, password: $password) {
               Name
               MiddleName
